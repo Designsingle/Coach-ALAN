@@ -295,42 +295,6 @@ body::before {
     }
 }
 
-/* =========================================================
-   iOS SAFARI FIX
-   ========================================================= */
-/* =========================================
-   FIX iOS · SCROLL FLUIDO (SIN LAG)
-   ========================================= */
-@supports (-webkit-touch-callout: none) {
-
-    html, body {
-        height: auto;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    /* Las páginas NO controlan el scroll */
-    .page {
-        position: relative !important;
-        height: auto !important;
-        overflow: visible !important;
-        transform: none !important;
-    }
-
-    /* Evita repaints innecesarios */
-    .glass,
-    .card,
-    .modal-contenido {
-        will-change: auto;
-        transform: translateZ(0);
-    }
-
-    /* Fondo SIN attachment fijo (clave) */
-    body::before,
-    body::after {
-        background-attachment: scroll !important;
-    }
-}
 
 
 /* =========================================================
@@ -884,6 +848,43 @@ html, body {
 body {
   padding-top: env(safe-area-inset-top);
   padding-bottom: env(safe-area-inset-bottom);
+}
+/* =========================================
+   iOS SAFARI · FIX DEFINITIVO
+   2 PÁGINAS · SIN ESTIRAR · FLUIDO
+   ========================================= */
+@supports (-webkit-touch-callout: none) {
+
+  html, body {
+    height: 100%;
+    overflow: hidden; /* 🔑 body NO scrollea */
+  }
+
+  /* SOLO la página activa scrollea */
+  .page {
+    position: fixed;
+    inset: 0;
+    height: 100%;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .page.active {
+    overflow-y: auto; /* 🔥 ÚNICO SCROLL */
+  }
+
+  /* Evita bug de estiramiento */
+  .page:not(.active) {
+    height: 0;
+    overflow: hidden;
+  }
+
+  /* Fondo estable */
+  body::before,
+  body::after {
+    background-attachment: scroll;
+  }
+
 }
 
 
