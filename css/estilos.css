@@ -843,3 +843,52 @@ footer {
 @media (min-width: 1024px) {
     .modal-opciones { padding: 32px; }
 }
+/* =========================================
+   SCROLL STABLE · WEB + TABLET + MOBILE
+   NO ESTIRA · NO DUPLICA · NO LAG
+   ========================================= */
+
+/* Body nunca scrollea */
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Pages controlan el scroll */
+.page {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* SOLO la activa scrollea */
+.page.active {
+    overflow-y: auto;
+}
+
+/* Página inactiva no suma altura */
+.page:not(.active) {
+    height: 0;
+    overflow: hidden;
+}
+
+/* Evita bugs de Safari con vh/dvh */
+.page {
+    min-height: 100%;
+}
+
+/* Fondo estable en todos */
+body::before,
+body::after {
+    background-attachment: scroll;
+}
+
+/* Optimización de render */
+.card,
+.glass,
+.modal-contenido {
+    transform: translateZ(0);
+}
