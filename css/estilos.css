@@ -893,19 +893,31 @@ body::after {
     transform: translateZ(0);
 }
 /* =========================================
-   iOS SAFARI · ACTIVAR EFECTO PÍLDORA
+   NEBLINA iOS · PARTE SUPERIOR (SAFE)
    ========================================= */
 @supports (-webkit-touch-callout: none) {
 
-    /* Safari necesita saber quién scrollea */
-    .page.active {
-        overscroll-behavior-y: auto;
-        -webkit-overflow-scrolling: touch;
-        touch-action: pan-y;
-    }
+    .ios-top-blur {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
 
-    /* Ayuda a Safari a detectar scroll real */
-    .page {
-        contain: none;
+        height: 90px; /* altura tipo Safari */
+        padding-top: env(safe-area-inset-top);
+
+        pointer-events: none;
+        z-index: 9998;
+
+        background: linear-gradient(
+            180deg,
+            rgba(255,255,255,0.75),
+            rgba(255,255,255,0.45),
+            rgba(255,255,255,0.15),
+            rgba(255,255,255,0)
+        );
+
+        backdrop-filter: blur(14px) saturate(160%);
+        -webkit-backdrop-filter: blur(14px) saturate(160%);
     }
 }
