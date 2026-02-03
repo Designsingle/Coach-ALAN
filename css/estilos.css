@@ -800,57 +800,31 @@ footer {
     text-decoration: none;
 }
 
-/* ===============================
-   PÁGINAS · COMPORTAMIENTO APP
-=============================== */
-.page {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100dvh;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    transform: translateX(100%);
-    opacity: 0;
-    transition: transform .5s ease, opacity .3s ease;
-    z-index: 1;
+/* ===== PARCHES SAFARI iOS ===== */
+
+/* Permite que Safari use su UI dinámica */
+html {
+  background: transparent;
 }
 
-.page.active {
-    transform: translateX(0);
-    opacity: 1;
-    z-index: 2;
+body {
+  background: transparent;
+  overscroll-behavior-y: none;
 }
 
-/* ===============================
-   MODALES · ESPACIADO RESPONSIVE
-=============================== */
-.modal-opciones {
-    padding: 16px;
+/* Safe areas (Dynamic Island / Home Bar) */
+body {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
-.modal-contenido {
-    max-height: calc(100dvh - 64px);
-    overflow-y: auto;
+/* Evita fondos sólidos que rompen el efecto */
+header,
+footer {
+  background: transparent !important;
 }
 
-/* Tablet */
-@media (min-width: 600px) {
-    .modal-opciones { padding: 24px; }
-}
-
-/* Desktop */
-@media (min-width: 1024px) {
-    .modal-opciones { padding: 32px; }
-}
-/* ===== Safari iOS · permitir modo cápsula ===== */
-
-html, body {
-    background: transparent;
-}
-
-/* El primer bloque NO debe tapar el top */
-body > :first-child {
-    background: transparent !important;
-    position: relative;
+/* Si usas secciones full */
+section {
+  background-clip: padding-box;
 }
