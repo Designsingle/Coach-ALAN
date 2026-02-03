@@ -295,6 +295,13 @@ body::before {
     }
 }
 
+@supports (-webkit-touch-callout: none) {
+    .page {
+        position: relative !important;
+        height: auto !important;
+        overflow-y: visible !important;
+    }
+}
 
 /* =========================================================
    ESTILO FINAL · MODALES SECUNDARIOS (iOS CARD)
