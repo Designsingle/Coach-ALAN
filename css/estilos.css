@@ -843,20 +843,40 @@ footer {
 @media (min-width: 1024px) {
     .modal-opciones { padding: 32px; }
 }
-/* ===== PATCH · TRANSPARENCIA ARRIBA Y ABAJO ===== */
+/* =========================================
+   PATCH iOS · SAFARI URL + DYNAMIC ISLAND
+   ========================================= */
 
-html,
-body {
-    background: transparent !important;
-}
+/* Soporte exclusivo iOS */
+@supports (padding: env(safe-area-inset-top)) {
 
-/* Extremo superior */
-body {
-    padding-top: 120px;
-    padding-bottom: 160px;
-}
+    body {
+        background: transparent;
+    }
 
-/* Mantiene el contenido intacto */
-body > * {
-    background: inherit;
+    /* Zona superior (URL bar / Dynamic Island) */
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: env(safe-area-inset-top);
+        background: transparent;
+        pointer-events: none;
+        z-index: 9999;
+    }
+
+    /* Zona inferior (barra Safari) */
+    body::after {
+        content: "";
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: env(safe-area-inset-bottom);
+        background: transparent;
+        pointer-events: none;
+        z-index: 9999;
+    }
 }
