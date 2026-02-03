@@ -843,32 +843,20 @@ footer {
 @media (min-width: 1024px) {
     .modal-opciones { padding: 32px; }
 }
-/* =====================================
-   SECCIÓN INFERIOR COMO EN CoachALAN
-   ===================================== */
+/* ===== PATCH · TRANSPARENCIA ARRIBA Y ABAJO ===== */
 
-/* Solo afecta la segunda sección */
-section + section {
-    background: rgba(255, 255, 255, 0.85) !important;
-    border: none !important;
-    box-shadow: none !important;
-    margin-top: -15px;
-    padding-top: 40px;
-    padding-bottom: 60px;
-}
-
-/* Eliminamos radios que causan línea */
-section + section {
-    border-radius: 0 !important;
-}
-
-/* Si hay un contenedor interno con borde */
-section + section > div {
-    background: transparent !important;
-    border: none !important;
-}
-
-/* Mantiene scroll natural */
+html,
 body {
-    overflow-x: hidden;
+    background: transparent !important;
+}
+
+/* Extremo superior */
+body {
+    padding-top: 120px;
+    padding-bottom: 160px;
+}
+
+/* Mantiene el contenido intacto */
+body > * {
+    background: inherit;
 }
