@@ -304,10 +304,7 @@ body::before {
         min-height: 100svh;
     }
 
-    body::before,
-    body::after {
-        background-attachment: fixed;
-    }
+
 }
 /* =========================================================
    ESTILO FINAL · MODALES SECUNDARIOS (iOS CARD)
