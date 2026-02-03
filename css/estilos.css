@@ -843,22 +843,14 @@ footer {
 @media (min-width: 1024px) {
     .modal-opciones { padding: 32px; }
 }
-/* =========================================
-   Safari iOS · permitir efecto nativo Apple
-   ========================================= */
+/* ===== Safari iOS · permitir modo cápsula ===== */
 
-html,
-body {
+html, body {
     background: transparent;
 }
 
-/* El primer bloque debe tocar el top */
+/* El primer bloque NO debe tapar el top */
 body > :first-child {
-    margin-top: 0 !important;
-    padding-top: env(safe-area-inset-top);
-}
-
-/* El último bloque debe tocar el bottom */
-body > :last-child {
-    padding-bottom: env(safe-area-inset-bottom);
+    background: transparent !important;
+    position: relative;
 }
