@@ -844,40 +844,21 @@ footer {
     .modal-opciones { padding: 32px; }
 }
 /* =========================================
-   iOS SAFE-AREA · SOLO PÁGINA 2
+   Safari iOS · permitir efecto nativo Apple
    ========================================= */
 
-/* Asegúrate de que la página 2 tenga <body class="page-2"> */
+html,
+body {
+    background: transparent;
+}
 
-@supports (padding: env(safe-area-inset-top)) {
+/* El primer bloque debe tocar el top */
+body > :first-child {
+    margin-top: 0 !important;
+    padding-top: env(safe-area-inset-top);
+}
 
-    body.page-2 {
-        background: transparent;
-    }
-
-    /* Área superior (URL / Dynamic Island) */
-    body.page-2::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: env(safe-area-inset-top);
-        background: transparent;
-        pointer-events: none;
-        z-index: 9999;
-    }
-
-    /* Área inferior (barra Safari) */
-    body.page-2::after {
-        content: "";
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: env(safe-area-inset-bottom);
-        background: transparent;
-        pointer-events: none;
-        z-index: 9999;
-    }
+/* El último bloque debe tocar el bottom */
+body > :last-child {
+    padding-bottom: env(safe-area-inset-bottom);
 }
