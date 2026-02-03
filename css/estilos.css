@@ -844,3 +844,31 @@ footer {
 @media (min-width: 1024px) {
     .modal-opciones { padding: 32px; }
 }
+/* =========================================
+   FIX · 2 PÁGINAS + SAFARI CAPSULE
+   ========================================= */
+
+/* Estado base: páginas una debajo de otra */
+.page {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    transform: none;
+    opacity: 1;
+}
+
+/* Navegación tipo app (slide) SOLO visual */
+.page {
+    transition: transform .45s ease, opacity .3s ease;
+}
+
+/* Página inactiva */
+.page:not(.active) {
+    display: none;
+}
+
+/* Página activa */
+.page.active {
+    display: block;
+}
