@@ -295,14 +295,21 @@ body::before {
     }
 }
 
+/* =========================================================
+   iOS SAFARI FIX
+   ========================================================= */
 @supports (-webkit-touch-callout: none) {
     .page {
         position: relative !important;
         height: auto !important;
         overflow-y: visible !important;
     }
-}
 
+    body::before,
+    body::after {
+        background-attachment: fixed;
+    }
+}
 /* =========================================================
    ESTILO FINAL · MODALES SECUNDARIOS (iOS CARD)
    ========================================================= */
