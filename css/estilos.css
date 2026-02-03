@@ -844,18 +844,19 @@ footer {
     .modal-opciones { padding: 32px; }
 }
 /* =========================================
-   PATCH iOS · SAFARI URL + DYNAMIC ISLAND
+   iOS SAFE-AREA · SOLO PÁGINA 2
    ========================================= */
 
-/* Soporte exclusivo iOS */
+/* Asegúrate de que la página 2 tenga <body class="page-2"> */
+
 @supports (padding: env(safe-area-inset-top)) {
 
-    body {
+    body.page-2 {
         background: transparent;
     }
 
-    /* Zona superior (URL bar / Dynamic Island) */
-    body::before {
+    /* Área superior (URL / Dynamic Island) */
+    body.page-2::before {
         content: "";
         position: fixed;
         top: 0;
@@ -867,8 +868,8 @@ footer {
         z-index: 9999;
     }
 
-    /* Zona inferior (barra Safari) */
-    body::after {
+    /* Área inferior (barra Safari) */
+    body.page-2::after {
         content: "";
         position: fixed;
         bottom: 0;
