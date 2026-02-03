@@ -298,13 +298,34 @@ body::before {
 /* =========================================================
    iOS SAFARI FIX
    ========================================================= */
+/* =========================================
+   FIX iOS · SCROLL FLUIDO (SIN LAG)
+   ========================================= */
 @supports (-webkit-touch-callout: none) {
+
+    html, body {
+        height: auto;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Las páginas NO controlan el scroll */
     .page {
         position: relative !important;
         height: auto !important;
-        overflow-y: visible !important;
+        overflow: visible !important;
+        transform: none !important;
     }
 
+    /* Evita repaints innecesarios */
+    .glass,
+    .card,
+    .modal-contenido {
+        will-change: auto;
+        transform: translateZ(0);
+    }
+
+    /* Fondo SIN attachment fijo (clave) */
     body::before,
     body::after {
         background-attachment: scroll !important;
