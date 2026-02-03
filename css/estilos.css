@@ -307,9 +307,10 @@ body::before {
 
     body::before,
     body::after {
-        background-attachment: fixed;
+        background-attachment: scroll !important;
     }
 }
+
 /* =========================================================
    ESTILO FINAL · MODALES SECUNDARIOS (iOS CARD)
    ========================================================= */
@@ -845,30 +846,39 @@ footer {
     .modal-opciones { padding: 32px; }
 }
 /* =========================================
-   FIX · 2 PÁGINAS + SAFARI CAPSULE
+   PATCH iOS SAFARI + 2 PÁGINAS
+   NO TOCAR ARRIBA
    ========================================= */
 
-/* Estado base: páginas una debajo de otra */
+/* Safari necesita scroll real */
+html, body {
+  background: transparent;
+  height: auto;
+  overflow-x: hidden;
+}
+
+/* Safe areas iOS */
+body {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Páginas como vistas (NO fixed, NO scroll interno) */
 .page {
-    position: relative;
-    width: 100%;
-    height: auto;
-    overflow: visible;
-    transform: none;
-    opacity: 1;
+  position: relative;
+  width: 100%;
+  min-height: 100dvh;
+  overflow: visible;
+  display: none;
 }
 
-/* Navegación tipo app (slide) SOLO visual */
-.page {
-    transition: transform .45s ease, opacity .3s ease;
-}
-
-/* Página inactiva */
-.page:not(.active) {
-    display: none;
-}
-
-/* Página activa */
+/* Página visible */
 .page.active {
-    display: block;
+  display: block;
+}
+
+/* Evitar fondos que rompan la cápsula */
+header,
+footer {
+  background: transparent !important;
 }
