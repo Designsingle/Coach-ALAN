@@ -295,7 +295,17 @@ body::before {
     }
 }
 
+/* =========================================================
+   iOS SAFARI FIX
+   ========================================================= */
+@supports (-webkit-touch-callout: none) {
+    body {
+        background-attachment: fixed;
+        min-height: 100svh;
+    }
 
+
+}
 /* =========================================================
    ESTILO FINAL · MODALES SECUNDARIOS (iOS CARD)
    ========================================================= */
