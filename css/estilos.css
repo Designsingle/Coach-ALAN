@@ -892,3 +892,20 @@ body::after {
 .modal-contenido {
     transform: translateZ(0);
 }
+/* =========================================
+   iOS SAFARI · ACTIVAR EFECTO PÍLDORA
+   ========================================= */
+@supports (-webkit-touch-callout: none) {
+
+    /* Safari necesita saber quién scrollea */
+    .page.active {
+        overscroll-behavior-y: auto;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y;
+    }
+
+    /* Ayuda a Safari a detectar scroll real */
+    .page {
+        contain: none;
+    }
+}
