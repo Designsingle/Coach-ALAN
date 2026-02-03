@@ -1,0 +1,874 @@
+/* =========================================================
+   RESET
+   ========================================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* =========================================================
+   BASE / HTML / BODY
+   ========================================================= */
+html {
+    position: relative;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #f3f3f3;
+    overflow-x: hidden;
+    z-index: 0;
+
+    background: linear-gradient(
+        180deg,
+        #f3f8ff 0%,     /* arriba */
+        #88bdff 70%,    /* centro dominante */
+        #f3f8ff 100%    /* abajo */
+    );
+}
+/* =========================================================
+   FONDO · CUBRE TODA LA PÁGINA Y SCROLLEA
+   ========================================================= */
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    position: relative;
+    z-index: 0;
+    overflow-x: hidden;
+}
+
+/* Capa de fondo */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,1) 0%,
+            rgba(198,224,255,0.6) 12%,
+            rgba(172, 209, 255, 0.6) 28%,
+            rgba(136,189,255,1) 50%,
+            rgba(172, 209, 255, 0.6) 72%,
+            rgba(198,224,255,0.6) 88%,
+            rgba(255,255,255,1) 100%
+        );
+
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* =========================================================
+   LAYOUT
+   ========================================================= */
+.timeline {
+    max-width: 750px;
+    margin: 80px auto;
+    padding: 0 20px;
+    position: relative;
+}
+
+
+
+/* =========================================================
+   CARD · GLASS
+   ========================================================= */
+.card {
+    background: linear-gradient(
+        180deg,
+        rgba(6, 89, 198, 0.06),
+         transparent,
+        rgba(21, 68, 236, 0.55)
+    );
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border-radius: 30px;
+    padding: 45px 40px;
+    margin: 90px auto;
+    border: 0.5px solid rgba(0, 0, 0, 0.65);
+    box-shadow:
+        0 35px 70px rgba(0,0,0,0.18),
+        inset 0 1px 0 rgba(255,255,255,0.8);
+}
+
+.card > * + * {
+    margin-top: 18px;
+}
+
+.card p,
+.card ol {
+    max-width: 520px;
+    margin-inline: auto;
+    line-height: 1.55;
+}
+
+.card ol {
+    padding-left: 18px;
+}
+
+.card li {
+    margin-bottom: 10px;
+}
+
+/* =========================================================
+   PERFIL
+   ========================================================= */
+.perfil {
+    text-align: center;
+}
+
+.foto-perfil {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: rgba(255,255,255,0.95);
+    border: 3px solid rgba(255,255,255,0.9);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.22);
+}
+
+.foto-perfil img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* =========================================================
+   BENEFICIOS (CÍRCULOS)
+   ========================================================= */
+.beneficios {
+    display: flex;
+    justify-content: center;
+    gap: 26px;
+    margin-top: 34px;
+    padding-inline: 12px;
+}
+
+.beneficio {
+    width: 140px;
+    aspect-ratio: 1 / 1;
+    min-width: 140px;
+    min-height: 140px;
+    border-radius: 50%;
+
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    flex: 0 0 auto;
+
+    background: linear-gradient(
+        180deg,
+        rgba(255,255,255,0.85),
+        rgba(255,255,255,0.6)
+    );
+
+    backdrop-filter: blur(14px) saturate(150%);
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+
+    border: 0.5px solid rgba(255,255,255,0.85);
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.22),
+        inset 0 1px 0 rgba(255,255,255,0.85);
+
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    animation: aparecer 0.7s cubic-bezier(.4,0,.2,1) forwards;
+
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.beneficio img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1;
+}
+
+/* Delay animación */
+.beneficio:nth-child(1){animation-delay:.1s}
+.beneficio:nth-child(2){animation-delay:.2s}
+.beneficio:nth-child(3){animation-delay:.3s}
+.beneficio:nth-child(4){animation-delay:.4s}
+
+@keyframes aparecer {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* =========================================================
+   BOTÓN PRINCIPAL
+   ========================================================= */
+.btn-clase {
+    margin-top: 32px;
+    padding: 14px 28px;
+    border-radius: 14px;
+    background: rgb(16, 79, 216);
+    color: #ffffff;
+    font-weight: 600;
+    display: inline-block;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.btn-clase:active {
+    transform: scale(0.97);
+}
+
+/* =========================================================
+   MODAL OPCIONES
+   ========================================================= */
+.modal-opciones {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(6px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.modal-opciones.activo {
+    display: flex;
+}
+
+.modal-contenido {
+    background: linear-gradient(
+        180deg,
+        rgba(25,35,50,0.85),
+        rgba(20,30,45,0.75)
+    );
+    backdrop-filter: blur(28px) saturate(140%);
+    border-radius: 22px;
+    padding: 26px 22px;
+    width: 90%;
+    max-width: 320px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.18);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+    transform: translateY(28px) scale(0.94);
+    opacity: 0;
+    transition:
+        transform .55s cubic-bezier(.34,1.56,.64,1),
+        opacity .35s ease;
+}
+
+.modal-opciones.activo .modal-contenido {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (min-width: 768px) {
+    .beneficios {
+        flex-wrap: nowrap;
+    }
+}
+
+@media (max-width: 767px) {
+    .beneficios {
+        flex-wrap: wrap;
+    }
+
+    .beneficio {
+        width: 120px;
+        min-width: 120px;
+        min-height: 120px;
+    }
+}
+
+/* =========================================================
+   iOS SAFARI FIX
+   ========================================================= */
+@supports (-webkit-touch-callout: none) {
+    body {
+        background-attachment: fixed;
+        min-height: 100svh;
+    }
+
+    body::before,
+    body::after {
+        background-attachment: fixed;
+    }
+}
+/* =========================================================
+   ESTILO FINAL · MODALES SECUNDARIOS (iOS CARD)
+   ========================================================= */
+
+/* Fondo oscuro desenfocado */
+.modal-opciones {
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* Card flotante */
+.modal-opciones .modal-contenido {
+    background: linear-gradient(
+        180deg,
+            rgba(136,189,255,0.5) 50%,
+            rgba(136,189,255,0.6) 88%,
+            rgba(136,189,255,0.8) 100%
+    );
+
+    border-radius: 26px;
+    padding: 28px 24px;
+
+    width: 90%;
+    max-width: 340px;
+
+    box-shadow:
+        
+        inset 0 1px 0 rgba(255,255,255,0.08);
+
+    text-align: center;
+    color: #f3f3f3;
+}
+
+/* =========================================================
+   MODAL COMENCEMOS
+   ========================================================= */
+
+.modal-beneficio {
+    padding-top: 34px;
+}
+
+/* Imagen circular superior */
+.beneficio-preview {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 18px;
+
+    border-radius: 50%;
+    overflow: hidden;
+
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+}
+
+.beneficio-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ===============================
+   TEXTO BENEFICIOS · AJUSTE PRO
+   =============================== */
+
+/* Título */
+.beneficio-texto strong {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    text-align: center;        /* centra título */
+    letter-spacing: 0.3px;    /* look pro */
+}
+
+/* Lista */
+.beneficio-lista {
+    text-align: left;          /* mantiene lectura natural */
+    margin-top: 10px;
+    max-width: 420px;          /* evita texto muy ancho */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Items */
+.beneficio-lista li {
+    font-size: 0.95rem;
+    line-height: 1.55;         /* mejor respiración */
+    margin-bottom: 8px;
+}
+
+
+/* =========================================================
+   MODAL AGENDA TU CLASE · ESPACIADO PRO
+   ========================================================= */
+
+.modal-opciones .modal-contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    padding: 28px 24px 22px;
+}
+
+/* Título */
+.modal-opciones .modal-contenido h3 {
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    margin-bottom: 18px;
+}
+
+/* Botones */
+.modal-opciones .opcion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    height: 54px;
+    margin-bottom: 14px; /* separación PRO entre botones */
+
+    border-radius: 16px;
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.modal-opciones .opcion:active {
+    transform: scale(0.97);
+    box-shadow:
+        0 6px 14px rgb(0, 0, 0),
+        inset 0 1px 0 rgb(255, 255, 255);
+}
+
+/* Colores */
+.opcion-calendly {
+    background: linear-gradient(180deg, #2b7cff, #1a5fd0);
+}
+
+.opcion-whatsapp {
+    background: linear-gradient(180deg, #2fe06e, #1fa855);
+}
+
+/* Cancelar */
+.modal-opciones .cerrar-modal {
+    margin-top: 6px;
+    padding-top: 6px;
+
+    background: transparent;
+    border: none;
+
+    font-size: 0.95rem;
+    color: #ffffff;
+
+    opacity: 0.75;
+    transition: opacity 0.15s ease;
+}
+
+.modal-opciones .cerrar-modal:hover {
+    opacity: 1;
+}
+
+/* =========================================================
+   AJUSTE PRO · CONSISTENCIA CON DISEÑO GENERAL
+   ========================================================= */
+
+/* Fondo del modal más elegante (menos negro puro) */
+.modal-opciones {
+    background: rgba(10, 25, 13, 0.55)transparent;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+/* Card más “glass premium” */
+.card {
+    background: linear-gradient(
+        180deg,  
+        rgba(38, 96, 182, 0.36)
+    );
+}
+
+/* =========================================================
+   MODAL COMENCEMOS · JERARQUÍA VISUAL
+   ========================================================= */
+
+.modal-beneficio {
+    padding-top: 38px;
+}
+
+/* Imagen circular más integrada */
+.beneficio-preview {
+    width: 118px;
+    height: 118px;
+
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.45),
+        inset 0 1px 1px rgba(255,255,255,0.12);
+}
+
+/* Título con peso pro */
+.beneficio-texto strong {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+/* Lista más limpia */
+.beneficio-lista {
+    margin-top: 14px;
+}
+
+.beneficio-lista li {
+    font-size: 0.94rem;
+    opacity: 0.92;
+}
+
+/* =========================================================
+   MODAL AGENDA TU CLASE · ESPACIADO PRO
+   ========================================================= */
+
+.modal-opciones .modal-contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    padding: 28px 24px 22px;
+}
+
+/* Título */
+.modal-opciones .modal-contenido h3 {
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    margin-bottom: 18px;
+    color: var(--modal-text-color);
+}
+
+/* Botones */
+.modal-opciones .opcion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    height: 54px;
+    margin-bottom: 14px;
+
+    border-radius: 16px;
+
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--modal-text-color);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.18);
+
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.modal-opciones .opcion:active {
+    transform: scale(0.97);
+    box-shadow:
+        0 6px 14px rgba(0,0,0,0.45),
+        inset 0 1px 0 rgba(255,255,255,0.12);
+}
+
+/* Calendly */
+.opcion-calendly {
+    background: linear-gradient(
+        180deg,
+        var(--calendly-top),
+        var(--calendly-bottom)
+    );
+}
+
+/* WhatsApp */
+.opcion-whatsapp {
+    background: linear-gradient(
+        180deg,
+        var(--whatsapp-top),
+        var(--whatsapp-bottom)
+    );
+}
+
+/* Cancelar */
+.modal-opciones .cerrar-modal {
+    margin-top: 6px;
+    padding-top: 6px;
+
+    background: transparent;
+    border: none;
+
+    font-size: 0.95rem;
+    color: var(--modal-text-color);
+
+    opacity: 0.75;
+    transition: opacity 0.15s ease;
+}
+
+.modal-opciones .cerrar-modal:hover {
+    opacity: 1;
+}
+:root {
+    /* Calendly */
+    --calendly-top: #2b7cff;
+    --calendly-bottom: #1a5fd0;
+
+    /* WhatsApp */
+    --whatsapp-top: #2fe06e;
+    --whatsapp-bottom: #1fa855;
+
+    /* Texto */
+    --modal-text-color: #ffffff;
+}
+
+footer {
+    text-align: center;
+    font-size: 0.85rem;
+    opacity: 0.9;
+
+    padding: 4px 16px 10px;
+
+    color: #000000;
+}
+.modal-beneficio {
+    text-align: center;
+}
+/* =========================================================
+   CAPA DE BURBUJAS (DETRÁS DEL GLASS)
+   ========================================================= */
+#bubbles-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0; /* debajo del glass, encima del fondo */
+}
+
+/* Burbuja individual */
+.bubble {
+    position: fixed;
+    bottom: -60px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle at 30% 30%,
+        rgb(115, 187, 255),
+        rgb(255, 255, 255)
+    );
+    opacity: 0.6;
+    animation: bubbleFloat linear forwards;
+    filter: blur(0.5px);
+}
+
+/* Animación base */
+@keyframes bubbleFloat {
+    from {
+        transform: translateY(0) scale(0.9);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.9;
+    }
+    to {
+        transform: translateY(-90vh) scale(3.3);
+        opacity: 0;
+    }
+}
+.secciones {
+    position: relative;
+    isolation: isolate; /* 🔥 CLAVE ABSOLUTA */
+}
+.glass {
+    position: relative;
+    z-index: 1;
+   .card-inner {
+    overflow: hidden;
+    border-radius: inherit;
+}
+
+}
+#bubbles-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1; /* detrás REAL */
+}
+/* =========================================================
+   COMENCEMOS · GRID 2x2 MÓVIL
+   (NO altera HTML ni imágenes)
+   ========================================================= */
+
+/* Contenedor de los círculos */
+.beneficios {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+
+    justify-items: center;
+    align-items: center;
+
+    margin-top: 32px;
+}
+
+/* Cada círculo */
+.beneficio {
+    width: 120px;
+    aspect-ratio: 1 / 1; /* círculo perfecto SIEMPRE */
+    height: auto;
+
+    border-radius: 50%;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Imagen dentro del círculo */
+.beneficio img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* =========================================================
+   TABLET VERTICAL → SIGUE 2x2
+   ========================================================= */
+@media (min-width: 600px) and (max-width: 1024px) {
+    .beneficios {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .beneficio {
+        width: 130px;
+    }
+}
+
+/* =========================================================
+   DESKTOP (opcional: si ya lo tienes, respeta lo existente)
+   ========================================================= */
+@media (min-width: 1025px) {
+    .beneficios {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .beneficio {
+        width: 140px;
+    }
+}
+/* ===============================
+   COMENCEMOS · CENTRADO DE TEXTO
+   =============================== */
+
+.comencemos,
+.comencemos * {
+    text-align: center;
+}
+
+/* Títulos */
+.comencemos h2,
+.comencemos h3 {
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.2;
+}
+
+/* Texto / párrafos */
+.comencemos p {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 480px; /* look pro, no texto muy ancho */
+}
+
+/* Quitar subrayado de WhatsApp y Calendly sin romper estilos */
+.modal-opciones .opcion,
+.modal-opciones .opcion:hover,
+.modal-opciones .opcion:active,
+.modal-opciones .opcion:focus {
+    text-decoration: none;
+}
+
+/* ===============================
+   PÁGINAS · COMPORTAMIENTO APP
+=============================== */
+.page {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100dvh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform .5s ease, opacity .3s ease;
+    z-index: 1;
+}
+
+.page.active {
+    transform: translateX(0);
+    opacity: 1;
+    z-index: 2;
+}
+
+/* ===============================
+   MODALES · ESPACIADO RESPONSIVE
+=============================== */
+.modal-opciones {
+    padding: 16px;
+}
+
+.modal-contenido {
+    max-height: calc(100dvh - 64px);
+    overflow-y: auto;
+}
+
+/* Tablet */
+@media (min-width: 600px) {
+    .modal-opciones { padding: 24px; }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .modal-opciones { padding: 32px; }
+}
+/* =====================================
+   SECCIÓN INFERIOR COMO EN CoachALAN
+   ===================================== */
+
+/* Solo afecta la segunda sección */
+section + section {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin-top: -15px;
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+
+/* Eliminamos radios que causan línea */
+section + section {
+    border-radius: 0 !important;
+}
+
+/* Si hay un contenedor interno con borde */
+section + section > div {
+    background: transparent !important;
+    border: none !important;
+}
+
+/* Mantiene scroll natural */
+body {
+    overflow-x: hidden;
+}

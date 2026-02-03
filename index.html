@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#c6e0ff">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<title>Coach AE</title>
+
+<link rel="stylesheet" href="css/estilos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<!-- ================= CAPA BURBUJAS ================= -->
+<div id="bubbles-layer"></div>
+
+<!-- ================= PAGE 1 ================= -->
+<div class="page page-1 active" id="page1">
+
+    <section class="timeline secciones glass">
+
+        <section class="card perfil">
+            <div class="foto-perfil">
+                <img src="imagenes/perfil1.jpeg">
+            </div>
+            <h1>COACH ACUÁTICO</h1>
+            <p class="subtitulo">Alan Espinosa</p>
+        </section>
+
+        <div style="text-align:center">
+            <a href="#" id="goPage2" class="btn-clase">Comencemos</a>
+        </div>
+
+        <footer>
+        </footer>
+
+    </section>
+</div>
+
+<!-- ================= PAGE 2 ================= -->
+<div class="page page-2" id="page2">
+
+<section class="timeline secciones glass comencemos">
+
+        <!-- SOBRE MI -->
+        <section class="card">
+            <h2>Sobre mí</h2>
+            <p>
+                Nadador master & coach que te ayudara a mejorar dentro de la natacion y aguas abiertas, buscando enfoque en tu tecnica y eficiencia.
+            </p>
+        </section>
+
+        <!-- BENEFICIOS --> 
+<section class="card">
+    <h2>¡Empecemos! 👇</h2>
+
+    <div class="beneficios">
+        <div class="beneficio" data-modal="modalBeneficio1">
+            Aprende desde cero
+            <img src="imagenes/beneficio1.jpeg" alt="">
+        </div>
+
+        <div class="beneficio" data-modal="modalBeneficio2">
+            Mejora tu técnica
+            <img src="imagenes/beneficio2.jpeg" alt="">
+        </div>
+
+        <div class="beneficio" data-modal="modalBeneficio3">
+            Domina los 4 estilos de la natacion
+            <img src="imagenes/beneficio3.jpeg" alt="">
+        </div>
+
+        <div class="beneficio" data-modal="modalBeneficio4">
+            Aumenta tu velocidad y resistencia
+            <img src="imagenes/beneficio4.jpeg" alt="">
+        </div>
+    </div>
+</section>
+
+        <!-- CLASE GRATIS -->
+        <section class="card">
+            <h2>Solicitar información</h2>
+
+            <p>Platiquemos y veamos:</p>
+
+            <ol>
+                <li>Tus objetivos dentro del agua</li>
+                <li>Evaluación de tu nivel actual</li>
+                <li>Adaptacion de entrenamientos</li>
+                <li>Seguimiento en el agua</li>
+            </ol>
+
+            <p>Cuentame mas sobre tu pasion por la NATACION</p>
+        <a href="javascript:void(0)" class="btn-clase" id="abrirOpciones">
+            Agenda tu llamada
+        </a>
+    </section>
+
+</section>
+</div>
+
+<!-- ================= MODAL OPCIONES ================= -->
+<div class="modal-opciones" id="modalOpciones">
+    <div class="modal-contenido">
+        <h3>Opciones de contacto</h3>
+
+        <a class="opcion opcion-calendly" href="https://calendly.com/alancoach8" target="_blank">
+            <i class="fa-regular fa-calendar"></i> Calendly
+        </a>
+
+        <a class="opcion opcion-whatsapp" href="https://wa.me/525612584271" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+        </a>
+
+        <button class="cerrar-modal">Cancelar</button>
+    </div>
+</div>
+
+<!-- JS -->
+    <script>
+        /* BENEFICIOS · HOVER + TAP & HOLD + VIBRACIÓN */
+        document.querySelectorAll('.beneficio').forEach(b => {
+            let pressTimer;
+
+            b.addEventListener('touchstart', () => {
+                pressTimer = setTimeout(() => {
+                    b.classList.add('activo');
+                    if (navigator.vibrate) navigator.vibrate(12);
+                }, 200);
+            });
+
+            b.addEventListener('touchend', () => {
+                clearTimeout(pressTimer);
+                b.classList.remove('activo');
+            });
+
+            b.addEventListener('mouseenter', () => b.classList.add('activo'));
+            b.addEventListener('mouseleave', () => b.classList.remove('activo'));
+        });
+
+        /* MODAL */
+        const abrir = document.getElementById('abrirOpciones');
+        const modal = document.getElementById('modalOpciones');
+        const cerrar = document.querySelector('.cerrar-modal');
+
+        abrir.addEventListener('click', () => {
+            modal.classList.add('activo');
+            if (navigator.vibrate) navigator.vibrate(10);
+        });
+
+        cerrar.addEventListener('click', () => {
+            modal.classList.remove('activo');
+        });
+
+        modal.addEventListener('click', e => {
+            if (e.target === modal) modal.classList.remove('activo');
+        });
+    </script>
+
+
+<!-- ================= MODAL BENEFICIO 1 ================= -->
+<div class="modal-opciones" id="modalBeneficio1">
+    <div class="modal-contenido modal-beneficio">
+        <div class="beneficio-preview">
+            <img src="imagenes/beneficio1.jpeg">
+        </div>
+        <p class="beneficio-texto">
+    <strong>Aprende desde cero</strong>
+</p>
+<ul class="beneficio-lista">
+    <li>Perderle miedo al agua</li>
+    <li>Flotación y respiración básica</li>
+    <li>Coordinación simple</li>
+</ul>
+
+    </div>
+</div>
+
+<!-- ================= MODAL BENEFICIO 2 ================= -->
+<div class="modal-opciones" id="modalBeneficio2">
+    <div class="modal-contenido modal-beneficio">
+        <div class="beneficio-preview">
+            <img src="imagenes/beneficio2.jpeg">
+        </div>
+        <p class="beneficio-texto">
+    <strong>Mejora tu técnica</strong>
+</p>
+<ul class="beneficio-lista">
+    <li>Coordinación y ritmo</li>
+    <li>Brazada y patada eficiente</li>
+    <li>Corrección de postura</li>
+</ul>
+
+    </div>
+</div>
+
+<!-- ================= MODAL BENEFICIO 3 ================= -->
+<div class="modal-opciones" id="modalBeneficio3">
+    <div class="modal-contenido modal-beneficio">
+        <div class="beneficio-preview">
+            <img src="imagenes/beneficio3.jpeg">
+        </div>
+        <p class="beneficio-texto">
+    <strong>Dominia los 4 estilos de natación</strong>
+</p>
+<ul class="beneficio-lista">
+    <li>Crol</li>
+    <li>Dorso</li>
+    <li>Pecho</li>
+    <li>Mariposa</li>
+</ul>
+
+    </div>
+</div>
+
+<!-- ================= MODAL BENEFICIO 4 ================= -->
+<div class="modal-opciones" id="modalBeneficio4">
+    <div class="modal-contenido modal-beneficio">
+        <div class="beneficio-preview">
+            <img src="imagenes/beneficio4.jpeg">
+        </div>
+        <p class="beneficio-texto">
+    <strong>Optimiza tu rendimiento</strong>
+</p>
+<ul class="beneficio-lista">
+    <li>Técnica más eficiente</li>
+    <li>Virajes, salidas</li>
+    <li>Control de recuperación</li>
+    <li>Longitud de brazada</li>
+    <li>Velocidad y resistencia</li>
+</ul>
+
+    </div>
+</div>
+
+<!-- ================= JS GLOBAL LIMPIO ================= -->
+<script>
+const page1 = document.getElementById('page1');
+const page2 = document.getElementById('page2');
+
+document.getElementById('goPage2').addEventListener('click', e => {
+    e.preventDefault();
+    page1.classList.remove('active');
+    page2.classList.add('active');
+    history.pushState({page:2}, '');
+});
+
+window.addEventListener('popstate', () => {
+    page2.classList.remove('active');
+    page1.classList.add('active');
+});
+
+/* MODALES */
+document.querySelectorAll('.beneficio').forEach(b => {
+    const modal = document.getElementById(b.dataset.modal);
+    b.addEventListener('click', () => modal.classList.add('activo'));
+});
+
+document.querySelectorAll('.modal-opciones').forEach(m => {
+    m.addEventListener('click', e => {
+        if (e.target === m) m.classList.remove('activo');
+    });
+});
+
+document.getElementById('abrirOpciones').onclick = () =>
+    document.getElementById('modalOpciones').classList.add('activo');
+
+document.querySelector('.cerrar-modal').onclick = () =>
+    document.getElementById('modalOpciones').classList.remove('activo');
+</script>
+
+<script>
+const bubblesLayer = document.getElementById("bubbles-layer");
+
+function createBubble() {
+    const bubble = document.createElement("div");
+    bubble.className = "bubble";
+
+    const size = Math.random() * 18 + 8; // tamaño
+    bubble.style.width = size + "px";
+    bubble.style.height = size + "px";
+
+    bubble.style.left = Math.random() * 100 + "%";
+    bubble.style.bottom = "-30px";
+
+    const duration = Math.random() * 6 + 8; // velocidad
+    bubble.style.animationDuration = duration + "s";
+
+    bubblesLayer.appendChild(bubble);
+
+    // Eliminar al terminar
+    setTimeout(() => {
+        bubble.remove();
+    }, duration * 1000);
+}
+
+// Generación continua
+setInterval(createBubble, 500);
+</script>
+
+
+
+</body>
+</html>
