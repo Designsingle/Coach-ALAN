@@ -298,27 +298,18 @@ body::before {
 /* =========================================================
    iOS SAFARI FIX
    ========================================================= */
-/* =========================================
-   FIX DOBLE SCROLL · DESKTOP ONLY
-   ========================================= */
-
-@media (hover: hover) and (pointer: fine) {
-
-    /* El scroll SOLO vive en el body */
-    html, body {
-        overflow-y: auto;
+@supports (-webkit-touch-callout: none) {
+    .page {
+        position: relative !important;
+        height: auto !important;
+        overflow-y: visible !important;
     }
 
-    /* Ningún contenedor interno scrollea */
-    .page,
-    .timeline,
-    .secciones {
-        overflow-y: visible !important;
-        height: auto !important;
-        max-height: none !important;
+    body::before,
+    body::after {
+        background-attachment: scroll !important;
     }
 }
-
 
 /* =========================================================
    ESTILO FINAL · MODALES SECUNDARIOS (iOS CARD)
