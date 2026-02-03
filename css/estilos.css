@@ -295,8 +295,20 @@ body::before {
     }
 }
 
+/* =========================================================
+   iOS SAFARI FIX
+   ========================================================= */
+@supports (-webkit-touch-callout: none) {
+    body {
+        background-attachment: fixed;
+        min-height: 100svh;
+    }
 
-
+    body::before,
+    body::after {
+        background-attachment: fixed;
+    }
+}
 /* =========================================================
    ESTILO FINAL · MODALES SECUNDARIOS (iOS CARD)
    ========================================================= */
@@ -650,9 +662,8 @@ footer {
     border-radius: 50%;
     background: radial-gradient(
         circle at 30% 30%,
-        rgb(255, 255, 255),
-        rgb(115, 187, 255)
-       
+        rgb(115, 187, 255),
+        rgb(255, 255, 255)
     );
     opacity: 0.6;
     animation: bubbleFloat linear forwards;
@@ -832,59 +843,3 @@ footer {
 @media (min-width: 1024px) {
     .modal-opciones { padding: 32px; }
 }
-/* =========================================
-   PATCH iOS SAFARI + 2 PÁGINAS
-   NO TOCAR ARRIBA
-   ========================================= */
-
-/* Safari necesita scroll real */
-html, body {
-  background: transparent;
-  height: auto;
-  overflow-x: hidden;
-}
-
-/* Safe areas iOS */
-body {
-  padding-top: env(safe-area-inset-top);
-  padding-bottom: env(safe-area-inset-bottom);
-}
-/* =========================================
-   iOS SAFARI · FIX DEFINITIVO
-   2 PÁGINAS · SIN ESTIRAR · FLUIDO
-   ========================================= */
-@supports (-webkit-touch-callout: none) {
-
-  html, body {
-    height: 100%;
-    overflow: hidden; /* 🔑 body NO scrollea */
-  }
-
-  /* SOLO la página activa scrollea */
-  .page {
-    position: fixed;
-    inset: 0;
-    height: 100%;
-    overflow: hidden;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .page.active {
-    overflow-y: auto; /* 🔥 ÚNICO SCROLL */
-  }
-
-  /* Evita bug de estiramiento */
-  .page:not(.active) {
-    height: 0;
-    overflow: hidden;
-  }
-
-  /* Fondo estable */
-  body::before,
-  body::after {
-    background-attachment: scroll;
-  }
-
-}
-
-
