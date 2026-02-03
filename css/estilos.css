@@ -311,6 +311,7 @@ body::before {
     }
 }
 
+
 /* =========================================================
    ESTILO FINAL · MODALES SECUNDARIOS (iOS CARD)
    ========================================================= */
@@ -664,8 +665,9 @@ footer {
     border-radius: 50%;
     background: radial-gradient(
         circle at 30% 30%,
-        rgb(115, 187, 255),
-        rgb(255, 255, 255)
+        rgb(255, 255, 255),
+        rgb(115, 187, 255)
+       
     );
     opacity: 0.6;
     animation: bubbleFloat linear forwards;
