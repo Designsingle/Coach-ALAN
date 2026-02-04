@@ -841,4 +841,23 @@ footer {
     .modal-opciones { padding: 32px; }
 }
 
+/* ===============================
+   iOS PATCH · ESTABILIDAD APP
+=============================== */
+@supports (-webkit-touch-callout: none) {
 
+    html, body {
+        height: 100%;
+        overflow: hidden; /* evita doble scroll */
+    }
+
+    .page {
+        overscroll-behavior: none; /* quita rebote */
+        -webkit-overflow-scrolling: touch;
+    }
+
+    body {
+        position: fixed;
+        width: 100%;
+    }
+}
