@@ -861,3 +861,29 @@ footer {
         width: 100%;
     }
 }
+/* ===============================
+   iOS STYLE · CARD INSET
+=============================== */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: #cfe4ff; /* fondo exterior */
+    height: 100%;
+}
+
+.page {
+    min-height: calc(100svh - 32px);
+    margin: 16px;
+    border-radius: 28px;
+
+    background: linear-gradient(180deg, #6aa9ff, #4f8ee8);
+    box-shadow:
+        0 20px 40px rgba(0,0,0,.18);
+
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.page {
+    padding-bottom: env(safe-area-inset-bottom);
+}
