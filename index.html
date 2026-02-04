@@ -257,10 +257,34 @@ document.getElementById('goPage2').addEventListener('click', e => {
     history.pushState({page:2}, '');
 });
 
-window.addEventListener('popstate', () => {
-    page2.classList.remove('active');
-    page1.classList.add('active');
+/* ================= HISTORIAL · FIX PAGE 1 / PAGE 2 ================= */
+
+// Estado inicial
+history.replaceState({ page: 1 }, '');
+
+/* Ir a página 2 */
+document.getElementById('goPage2').addEventListener('click', e => {
+    e.preventDefault();
+
+    page1.classList.remove('active');
+    page2.classList.add('active');
+
+    history.pushState({ page: 2 }, '');
 });
+
+/* Manejo correcto del back / forward */
+window.addEventListener('popstate', e => {
+    const page = e.state?.page || 1;
+
+    if (page === 1) {
+        page2.classList.remove('active');
+        page1.classList.add('active');
+    } else if (page === 2) {
+        page1.classList.remove('active');
+        page2.classList.add('active');
+    }
+});
+
 
 /* MODALES */
 document.querySelectorAll('.beneficio').forEach(b => {
