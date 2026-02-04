@@ -819,25 +819,3 @@ footer {
     z-index: 2;
 }
 
-/* ===============================
-   MODALES · ESPACIADO RESPONSIVE
-=============================== */
-.modal-opciones {
-    padding: 16px;
-}
-
-.modal-contenido {
-    max-height: calc(100dvh - 64px);
-    overflow-y: auto;
-}
-
-/* Tablet */
-@media (min-width: 600px) {
-    .modal-opciones { padding: 24px; }
-}
-
-/* Desktop */
-@media (min-width: 1024px) {
-    .modal-opciones { padding: 32px; }
-}
-
