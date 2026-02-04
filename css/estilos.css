@@ -819,3 +819,11 @@ footer {
     z-index: 2;
 }
 
+/* PAGE 1 · quitar espacio fantasma inferior */
+#page1 .footer {
+    display: none;
+}
+
+#page1 div[style*="height: 30vh"] {
+    display: none;
+}
