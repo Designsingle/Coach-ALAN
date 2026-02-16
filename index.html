@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coach AE</title>
+
+    <!-- ICONOS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+<main class="timeline">
+
+    <!-- PERFIL -->
+    <section class="card perfil">
+        <div class="foto-perfil">
+            <img src="imagenes/perfil1.jpeg" alt="Foto de perfil">
+        </div>
+
+        <h1>COACH ACUÁTICO</h1>
+        <p class="subtitulo">Alan Espinosa</p>
+    </section>
+
+    <!-- SOBRE MI -->
+    <section class="card">
+        <h2>Sobre mí</h2>
+        <p>
+            Nadador & coach que te ayudará a mejorar dentro de la natación y aguas abiertas, buscando enfoque en tu técnica y eficiencia.
+        </p>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section class="card">
+        <h2>¡Empecemos! 👇</h2>
+
+        <div class="beneficios">
+            <div class="beneficio" data-modal="modalBeneficio1">
+                Aprende desde cero
+                <img src="imagenes/beneficio1.jpeg" alt="">
+            </div>
+
+            <div class="beneficio" data-modal="modalBeneficio2">
+                Mejora tu técnica
+                <img src="imagenes/beneficio2.jpeg" alt="">
+            </div>
+
+            <div class="beneficio" data-modal="modalBeneficio3">
+                Domina los 4 estilos de la natacion
+                <img src="imagenes/beneficio3.jpeg" alt="">
+            </div>
+
+            <div class="beneficio" data-modal="modalBeneficio4">
+                Aumenta tu velocidad y resistencia
+                <img src="imagenes/beneficio4.jpeg" alt="">
+            </div>
+        </div>
+    </section>
+
+    <!-- CLASE GRATIS -->
+    <section class="card">
+        <h2>Agenda tu llamada</h2>
+
+        <p>Platiquemos y veamos:</p>
+
+        <ol>
+            <li>Tus objetivos dentro del agua</li>
+            <li>Evaluación de tu nivel actual</li>
+            <li>Adaptacion de entrenamientos</li>
+            <li>Seguimiento en el agua</li>
+        </ol>
+
+        <p>Cuentame mas sobre tu pasion por la NATACION</p>
+
+        <!-- BOTÓN (misma posición) -->
+        <a href="javascript:void(0)"
+           class="btn-clase"
+           id="abrirOpciones">
+           Solicitar Informacion
+        </a>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <span>© 2026 · Todos los derechos reservados ·</span>
+    <span class="footer-faq"><a href="pagina2.html">FAQs</a></span>
+</footer>
+
+<!-- MODAL OPCIONES -->
+<div class="modal-opciones" id="modalOpciones">
+    <div class="modal-contenido">
+        <h3>Opciones de contacto</h3>
+
+        <a href="https://calendly.com/alancoach8"
+           target="_blank"
+           class="opcion opcion-calendly">
+            <i class="fa-regular fa-calendar"></i>
+            Calendly
+        </a>
+
+        <a href="https://wa.me/525612584271"
+           target="_blank"
+           class="opcion opcion-whatsapp">
+            <i class="fa-brands fa-whatsapp"></i>
+            WhatsApp
+        </a>
+
+        <button class="cerrar-modal">Cancelar</button>
+    </div>
+</div>
+
+<!-- MODALES BENEFICIOS -->
+<div class="modal-opciones" id="modalBeneficio1">
+    <div class="modal-contenido modal-beneficio">
+        <div class="beneficio-preview">
+            <img src="imagenes/beneficio1.jpeg">
+        </div>
+        <p class="beneficio-texto"><strong>Diagnóstico Técnico</strong></p>
+        <ul class="beneficio-lista">
+            <li>Evaluación inicial de patrones de nado</li>
+            <li>Análisis de alineación y posición corporal</li>
+            <li>Identificación de pérdidas de eficiencia</li>
+        </ul>
+    </div>
+</div>
+
+<div class="modal-opciones" id="modalBeneficio2">
+    <div class="modal-contenido modal-beneficio">
+        <div class="beneficio-preview">
+            <img src="imagenes/beneficio2.jpeg">
+        </div>
+        <p class="beneficio-texto"><strong>Planificación Personalizada</strong></p>
+        <ul class="beneficio-lista">
+            <li>Microciclos estructurados semanalmente</li>
+            <li>Enfoque en eficiencia y control técnico</li>
+            <li>Progresión ajustada al nivel del nadador</li>
+        </ul>
+    </div>
+</div>
+
+<div class="modal-opciones" id="modalBeneficio3">
+    <div class="modal-contenido modal-beneficio">
+        <div class="beneficio-preview">
+            <img src="imagenes/beneficio3.jpeg">
+        </div>
+        <p class="beneficio-texto"><strong>Optimización Mecánica</strong></p>
+        <ul class="beneficio-lista">
+            <li>Frecuencia y longitud de brazada</li>
+            <li>Coordinación respiratoria</li>
+            <li>Estabilidad y control bajo fatiga</li>
+        </ul>
+    </div>
+</div>
+
+<div class="modal-opciones" id="modalBeneficio4">
+    <div class="modal-contenido modal-beneficio">
+        <div class="beneficio-preview">
+            <img src="imagenes/beneficio4.jpeg">
+        </div>
+        <p class="beneficio-texto"><strong>Seguimiento Estratégico</strong></p>
+        <ul class="beneficio-lista">
+            <li>Revisión semanal por videollamada</li>
+            <li>Ajustes progresivos según evolución</li>
+            <li>Enfoque en rendimiento sostenible</li>
+        </ul>
+    </div>
+</div>
+
+<div id="bubbles-layer"></div>
+
+<!-- ==================== JS ==================== -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // MODAL OPCIONES
+    const abrir = document.getElementById('abrirOpciones');
+    const modal = document.getElementById('modalOpciones');
+    const cerrar = document.querySelector('.cerrar-modal');
+
+    abrir.addEventListener('click', () => {
+        modal.classList.add('activo');
+        if (navigator.vibrate) navigator.vibrate(10);
+    });
+
+    cerrar.addEventListener('click', () => modal.classList.remove('activo'));
+    modal.addEventListener('click', e => {
+        if(e.target === modal) modal.classList.remove('activo');
+    });
+
+    // MODALES BENEFICIOS
+    document.querySelectorAll('.beneficio').forEach(b => {
+        const modalID = b.dataset.modal;
+        const modalBeneficio = document.getElementById(modalID);
+        if(!modalBeneficio) return;
+
+        let pressTimer;
+
+        // LONG PRESS MOBILE
+        b.addEventListener('touchstart', () => {
+            pressTimer = setTimeout(() => modalBeneficio.classList.add('activo'), 250);
+        });
+        b.addEventListener('touchend', () => clearTimeout(pressTimer));
+
+        // CLICK DESKTOP
+        b.addEventListener('click', () => modalBeneficio.classList.add('activo'));
+
+        // HOVER
+        b.addEventListener('mouseenter', () => b.classList.add('activo'));
+        b.addEventListener('mouseleave', () => b.classList.remove('activo'));
+
+        // Cerrar modal tocando fuera
+        modalBeneficio.addEventListener('click', e => {
+            if(e.target === modalBeneficio) modalBeneficio.classList.remove('activo');
+        });
+    });
+
+    // ESC para cerrar
+    document.addEventListener('keydown', e => {
+        if(e.key === "Escape"){
+            document.querySelectorAll('.modal-opciones.activo').forEach(m => m.classList.remove('activo'));
+        }
+    });
+
+    // BURBUJAS
+    const bubblesLayer = document.getElementById("bubbles-layer");
+    if(bubblesLayer){
+        function createBubble() {
+            const bubble = document.createElement("div");
+            bubble.className = "bubble";
+            const size = Math.random() * 18 + 8;
+            bubble.style.width = size + "px";
+            bubble.style.height = size + "px";
+            bubble.style.left = Math.random() * 100 + "%";
+            bubble.style.bottom = "-30px";
+            const duration = Math.random() * 6 + 8;
+            bubble.style.animationDuration = duration + "s";
+            bubblesLayer.appendChild(bubble);
+            setTimeout(() => bubble.remove(), duration * 1000);
+        }
+        setInterval(createBubble, 600);
+    }
+
+});
+</script>
+
+</body>
+</html>
