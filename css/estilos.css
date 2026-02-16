@@ -52,6 +52,17 @@ body::before {
     height: 100%;
     z-index: -1;
 
+        background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,1) 0%,
+            rgba(198,224,255,0.6) 12%,
+            rgba(172, 209, 255, 0.6) 28%,
+            rgba(136,189,255,1) 50%,
+            rgba(172, 209, 255, 0.6) 72%,
+            rgba(198,224,255,0.6) 88%,
+            rgba(255,255,255,1) 100%
+        );
 
     background-repeat: no-repeat;
     background-size: cover;
@@ -1261,4 +1272,15 @@ transition:all .4s cubic-bezier(.22,1,.36,1);
 .disclaimer {
     font-size: 14px;
     color: #666;
+}
+
+.top-title {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 0.9rem;   /* mismo tamaño que el footer */
+    font-weight: 400;    /* mismo peso */
+    letter-spacing: 0.5px;
 }
