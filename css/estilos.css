@@ -73,10 +73,11 @@ body::before {
    ========================================================= */
 .timeline {
     max-width: 750px;
-    margin: 80px auto;
+    margin: 30px auto;
     padding: 0 20px;
     position: relative;
 }
+
 
 
 
